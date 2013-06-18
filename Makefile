@@ -1,5 +1,5 @@
 default:
-	happy ArithParser.y
+	happy Parser.y
 
 clean:
-	rm ArithParser.hs
+	rm Parser.hs

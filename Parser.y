@@ -1,6 +1,6 @@
 {
 
-  module ArithParser (Expr(..), arith, lexer) where
+  module Parser (Expr(..), parser, lexer) where
 
 data Expr = Number Int
     | Plus Expr Expr
@@ -18,7 +18,7 @@ isSpace c               =  c == ' '
 
 }
 
-%name arith
+%name parser
 %tokentype { Token }
 %error { parseError }
 

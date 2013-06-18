@@ -1,4 +1,4 @@
-import ArithParser
+import Parser
 
 interp :: Expr -> Int
 interp e = case e of
