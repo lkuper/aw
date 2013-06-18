@@ -64,7 +64,5 @@ lexer (')':cs) = TokenCB : lexer cs
 
 lexNum cs = TokenInt (read num) : lexer rest
   where (num,rest) = span isDigit cs
-            
-main = getContents >>= print . arith . lexer
 
 }
