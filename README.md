@@ -1,4 +1,4 @@
-The littlest interpreter for the littlest language.
+The littlest interpreter for the littlest language.  Mostly just a reason to try out [Happy].
 
 ~~~
 landin:aw lkuper$ make
@@ -14,3 +14,5 @@ Ok, modules loaded: ArithParser, Main.
 *Main> (interp . arith . lexer) "((3 + 4) - 2)"
 5
 ~~~
+
+[Happy]: http://www.haskell.org/happy/
