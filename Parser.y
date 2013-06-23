@@ -1,20 +1,8 @@
 {
 
-  module Parser (Expr(..), parser, lexer) where
-
-data Expr = Number Int
-    | Plus Expr Expr
-    | Minus Expr Expr  
-    | Times Expr Expr
- deriving Show
-
--- These next two are just ripped off from base.
-
-isDigit                 :: Char -> Bool
-isDigit c               =  c >= '0' && c <= '9'
-
-isSpace                 :: Char -> Bool
-isSpace c               =  c == ' '
+  module Parser (parser, lexer) where
+import Data.Char (isDigit, isSpace)
+import Interp (Expr(..))
 
 }
 
@@ -22,7 +10,7 @@ isSpace c               =  c == ' '
 %tokentype { Token }
 %error { parseError }
 
-%token 
+%token
       int             { TokenInt $$ }
       '+'             { TokenPlus }
       '-'             { TokenMinus }

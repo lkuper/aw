@@ -1,4 +1,10 @@
-import Parser
+module Interp (Expr(..), interp) where
+
+data Expr = Number Int
+    | Plus Expr Expr
+    | Minus Expr Expr  
+    | Times Expr Expr
+ deriving Show
 
 interp :: Expr -> Int
 interp e = case e of
