@@ -1,8 +1,27 @@
-import Parser
+module Interp (Expr(..), Env, interp) where
+import qualified Data.Map as Map
 
-interp :: Expr -> Int
-interp e = case e of
+data Expr = Number Int
+    | Var String
+    | Plus Expr Expr
+    | Minus Expr Expr  
+    | Times Expr Expr
+ deriving Show
+
+type Env = Map.Map String Int
+
+emptyEnv :: Env
+emptyEnv = Map.empty
+
+lookupEnv :: Env -> String -> Int
+lookupEnv env x = case Map.lookup x env of
+  Just n -> n
+  Nothing -> error "Unbound variable!"
+
+interp :: Expr -> Env -> Int
+interp e env = case e of
+  Var x -> lookupEnv env x
   Number n -> n
-  Plus e1 e2 -> (interp e1) + (interp e2)
-  Minus e1 e2 -> (interp e1) - (interp e2)
-  Times e1 e2 -> (interp e1) * (interp e2)
+  Plus e1 e2 -> (interp e1 env) + (interp e2 env)
+  Minus e1 e2 -> (interp e1 env) - (interp e2 env)
+  Times e1 e2 -> (interp e1 env) * (interp e2 env)

@@ -1,20 +1,8 @@
 {
 
-  module Parser (Expr(..), parser, lexer) where
-
-data Expr = Number Int
-    | Plus Expr Expr
-    | Minus Expr Expr  
-    | Times Expr Expr
- deriving Show
-
--- These next two are just ripped off from base.
-
-isDigit                 :: Char -> Bool
-isDigit c               =  c >= '0' && c <= '9'
-
-isSpace                 :: Char -> Bool
-isSpace c               =  c == ' '
+  module Parser (parser, lexer) where
+import Data.Char (isAlpha, isDigit, isSpace)
+import Interp (Expr(..))
 
 }
 
@@ -22,7 +10,8 @@ isSpace c               =  c == ' '
 %tokentype { Token }
 %error { parseError }
 
-%token 
+%token
+      str             { TokenVar $$ }
       int             { TokenInt $$ }
       '+'             { TokenPlus }
       '-'             { TokenMinus }
@@ -32,7 +21,8 @@ isSpace c               =  c == ' '
 
 %%
       
-Expr  : int                     { Number $1 }
+Expr  : str                     { Var $1 }
+      | int                     { Number $1 }
       | '(' Expr '+' Expr ')'   { Plus $2 $4 }
       | '(' Expr '-' Expr ')'   { Minus $2 $4 }
       | '(' Expr '*' Expr ')'   { Times $2 $4 }
@@ -43,7 +33,8 @@ parseError :: [Token] -> a
 parseError _ = error "Parse error"
         
 data Token
-      = TokenInt Int
+      = TokenVar String
+      | TokenInt Int
       | TokenPlus
       | TokenMinus
       | TokenTimes
@@ -55,6 +46,7 @@ lexer :: String -> [Token]
 lexer [] = []
 lexer (c:cs) 
       | isSpace c = lexer cs
+      | isAlpha c = lexVar (c:cs)
       | isDigit c = lexNum (c:cs)
 lexer ('+':cs) = TokenPlus : lexer cs
 lexer ('-':cs) = TokenMinus : lexer cs
@@ -64,5 +56,8 @@ lexer (')':cs) = TokenCB : lexer cs
 
 lexNum cs = TokenInt (read num) : lexer rest
   where (num,rest) = span isDigit cs
+
+lexVar cs = TokenVar var : lexer rest
+  where (var,rest) = span isAlpha cs
 
 }
