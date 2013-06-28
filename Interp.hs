@@ -1,4 +1,4 @@
-module Interp (Expr(..), Env, interp) where
+module Interp (Expr(..), Env, emptyEnv, interp) where
 import qualified Data.Map as Map
 
 data Expr = Number Int
