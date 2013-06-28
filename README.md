@@ -13,7 +13,10 @@ Loading package base ... linking ... done.
 [2 of 3] Compiling Parser           ( Parser.hs, interpreted )
 [3 of 3] Compiling Main             ( Main.hs, interpreted )
 Ok, modules loaded: Parser, Main, Interp.
-*Main> driver "((3 + 4) - 2)"
+*Main> driver "((3 + 4) - 2)" Nothing
+Loading package array-0.4.0.0 ... linking ... done.
+Loading package deepseq-1.3.0.0 ... linking ... done.
+Loading package containers-0.4.2.1 ... linking ... done.
 5
 ~~~
 
