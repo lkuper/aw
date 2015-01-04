@@ -4,8 +4,8 @@ reason to try out [Happy].
 ~~~
 $ make
 happy Parser.y
-GHCi, version 7.4.2: http://www.haskell.org/ghc/  :? for help
 $ ghci Main.hs
+GHCi, version 7.8.3: http://www.haskell.org/ghc/  :? for help
 Loading package ghc-prim ... linking ... done.
 Loading package integer-gmp ... linking ... done.
 Loading package base ... linking ... done.
@@ -14,9 +14,9 @@ Loading package base ... linking ... done.
 [3 of 3] Compiling Main             ( Main.hs, interpreted )
 Ok, modules loaded: Parser, Main, Interp.
 *Main> driver "((3 + 4) - 2)" Nothing
-Loading package array-0.4.0.0 ... linking ... done.
-Loading package deepseq-1.3.0.0 ... linking ... done.
-Loading package containers-0.4.2.1 ... linking ... done.
+Loading package array-0.5.0.0 ... linking ... done.
+Loading package deepseq-1.3.0.2 ... linking ... done.
+Loading package containers-0.5.5.1 ... linking ... done.
 5
 ~~~
 
