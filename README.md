@@ -2,10 +2,10 @@ The littlest interpreter for the littlest language.  Mostly just a
 reason to try out [Happy].
 
 ~~~
-lkuper@mitzi:~/repos/aw$ make
+$ make
 happy Parser.y
-lkuper@mitzi:~/repos/aw$ ghci Main.hs 
 GHCi, version 7.4.2: http://www.haskell.org/ghc/  :? for help
+$ ghci Main.hs
 Loading package ghc-prim ... linking ... done.
 Loading package integer-gmp ... linking ... done.
 Loading package base ... linking ... done.
